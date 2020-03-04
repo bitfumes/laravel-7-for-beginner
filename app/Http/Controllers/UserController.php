@@ -12,10 +12,9 @@ class UserController extends Controller
         $data = [
             'name'    => 'Elon',
             'email'   => 'elon@bitfumes.com',
-            'password'=> bcrypt('password'),
-            'mobile'  => 4445345,
+            'password'=> 'password',
         ];
-        User::create($data);
+        // User::create($data);
         // $user           = new User();
         // $user->name     = 'sarthak';
         // $user->email    = 'sarthak@bitfumes.com';
