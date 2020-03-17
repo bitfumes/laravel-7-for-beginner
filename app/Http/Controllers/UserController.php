@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function uploadAvatar(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            User::uploadAvatar($request->image);
+            return redirect()->back(); // success message
+        }
+        return redirect()->back(); // error message
+    }
+
     public function index()
     {
         $data = [
