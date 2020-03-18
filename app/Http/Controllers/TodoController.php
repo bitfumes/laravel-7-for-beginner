@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Todo;
-use Illuminate\Http\Request;
+use App\Http\Requests\TodoCreateRequest;
 
 class TodoController extends Controller
 {
@@ -17,7 +17,7 @@ class TodoController extends Controller
         return view('todos.create');
     }
 
-    public function store(Request $request)
+    public function store(TodoCreateRequest $request)
     {
         Todo::create($request->all());
         return redirect()->back()->with('message', 'Todo Created Successfully');
