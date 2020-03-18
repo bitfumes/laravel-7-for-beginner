@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Todo;
+use Illuminate\Http\Request;
 use App\Http\Requests\TodoCreateRequest;
 
 class TodoController extends Controller
@@ -24,8 +25,15 @@ class TodoController extends Controller
         return redirect()->back()->with('message', 'Todo Created Successfully');
     }
 
-    public function edit()
+    public function edit(Todo $todo)
     {
-        return view('todos.edit');
+        return view('todos.edit', compact('todo'));
+    }
+
+    public function update(Request $request, Todo $todo)
+    {
+        $todo->update(['title' => $request->title]);
+        return redirect(route('todo.index'))->with('message', 'Updated!');
+        // update todo
     }
 }
