@@ -7,6 +7,11 @@ use App\Http\Requests\TodoCreateRequest;
 
 class TodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $todos = Todo::orderBy('completed')->get();
@@ -48,7 +53,7 @@ class TodoController extends Controller
         return redirect()->back()->with('message', 'Task Marked as Incompleted!');
     }
 
-    public function delete(Todo $todo)
+    public function destroy(Todo $todo)
     {
         $todo->delete();
         return redirect()->back()->with('message', 'Task Deleted!');
