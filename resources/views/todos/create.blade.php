@@ -1,7 +1,7 @@
 @extends('todos.layout')
 
 @section('content')
-    <h1 class="text-2xl">What next you need To-DO</h1>
+    <h1 class="text-2xl border-b pb-4">What next you need To-DO</h1>
     <x-alert />
     <form method="post" action="/todos/create" class="py-5">
         @csrf
