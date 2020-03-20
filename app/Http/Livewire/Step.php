@@ -13,6 +13,11 @@ class Step extends Component
         $this->steps[] = count($this->steps)+1;
     }
 
+    public function remove($index)
+    {
+        unset($this->steps[$index]);
+    }
+
     public function render()
     {
         return view('livewire.step');
