@@ -9,7 +9,7 @@
 </div>
         <ul class="my-5">
             <x-alert />
-            @foreach($todos as $todo)
+            @forelse($todos as $todo)
             <li class="flex justify-between p-2">
                 <div>
                     @include('todos.complete-button')
@@ -18,14 +18,14 @@
                 @if($todo->completed)
                 <p class="line-through">{{$todo->title}}</p>
                 @else
-                <p>{{$todo->title}}</p>
+                <a class="cursor-pointer" href="{{route('todo.show',$todo->id)}}">{{$todo->title}}</a>
                 @endif
 
                 <div>
                     <a href="{{route('todo.edit',$todo->id)}}" class="text-orange-400 cursor-pointer text-white">
-                <span class="fas fa-edit px-2" /></a>
+                <span class="fas fa-pen px-2" /></a>
                     
-                <span class="fas fa-trash text-red-500 px-2 cursor-pointer"  
+                <span class="fas fa-times text-red-500 px-2 cursor-pointer"  
                 onclick="event.preventDefault();
                         if(confirm('Are you really want to delete?')){
                             document.getElementById('form-delete-{{$todo->id}}')
@@ -37,7 +37,9 @@
                 </form>
                 </div>
             </li>
-            @endforeach
+            @empty
+                        <p>No task available, create one.</p>
+            @endforelse
         </ul>
 @endsection
 
