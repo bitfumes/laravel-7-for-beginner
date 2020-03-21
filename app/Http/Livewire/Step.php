@@ -7,7 +7,6 @@ use Livewire\Component;
 class Step extends Component
 {
     public $steps = [];
-    public $data;
 
     public function increment()
     {
